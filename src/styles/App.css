@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #1e293b;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f1f5f9, #ffffff);
+}
+
+.app {
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding: 32px 16px;
+}
+
+.app-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #9429ff;
+  margin-bottom: 12px;
+}
+
+.app-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto 16px;
+}
+
+.csv-instructions {
+  max-width: 600px;
+  margin: 16px auto 0;
+  padding: 16px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.csv-instructions-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.csv-instructions-list {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.csv-instructions-list li {
+  margin-bottom: 4px;
+}
+
+.app-main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sample-csv-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.download-sample-button {
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #9429ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.download-sample-button:hover {
+  background-color: #7c1fd9;
+}
+
+.download-sample-button:active {
+  background-color: #6a1bb8;
+}
+
+.download-sample-button svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 28px;
+  }
+
+  .app-subtitle {
+    font-size: 14px;
+  }
+
+  .app {
+    padding: 16px 12px;
+  }
+
+  .app-header {
+    padding: 24px 12px;
+    margin-bottom: 32px;
+  }
+}
+

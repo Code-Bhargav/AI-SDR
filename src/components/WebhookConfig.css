@@ -1,0 +1,144 @@
+.webhook-config {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  padding: 20px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.webhook-config-display {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background-color: #f0fdf4;
+  border-radius: 8px;
+  border: 1px solid #86efac;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.webhook-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.webhook-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.webhook-url {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  color: #1e293b;
+  background-color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.webhook-input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.webhook-input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  transition: border-color 0.2s ease;
+}
+
+.webhook-input:focus {
+  outline: none;
+  border-color: #9429ff;
+  box-shadow: 0 0 0 3px rgba(148, 41, 255, 0.1);
+}
+
+.webhook-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.save-button,
+.edit-button,
+.cancel-button {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.save-button {
+  background-color: #9429ff;
+  color: #ffffff;
+}
+
+.save-button:hover {
+  background-color: #7c1fd9;
+}
+
+.edit-button {
+  background-color: #64748b;
+  color: #ffffff;
+}
+
+.edit-button:hover {
+  background-color: #475569;
+}
+
+.cancel-button {
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.cancel-button:hover {
+  background-color: #f1f5f9;
+}
+
+.webhook-hint {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .webhook-config-display {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .webhook-input-group {
+    flex-direction: column;
+  }
+
+  .webhook-actions {
+    width: 100%;
+  }
+
+  .save-button,
+  .cancel-button {
+    flex: 1;
+  }
+}
+

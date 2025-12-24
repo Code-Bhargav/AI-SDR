@@ -1,0 +1,150 @@
+.validation-results-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 32px auto 0;
+}
+
+.validation-success,
+.validation-error {
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.validation-success {
+  background-color: #f0fdf4;
+  border: 2px solid #86efac;
+}
+
+.validation-error {
+  background-color: #fef2f2;
+  border: 2px solid #fca5a5;
+}
+
+.success-icon,
+.error-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.success-icon {
+  color: #16a34a;
+}
+
+.error-icon {
+  color: #dc2626;
+}
+
+.validation-title {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 12px 0;
+  color: #9429ff;
+}
+
+.validation-message {
+  font-size: 16px;
+  text-align: center;
+  margin: 0 0 24px 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.missing-fields-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.missing-field-item {
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.missing-field-item code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.validation-hint {
+  font-size: 14px;
+  color: #64748b;
+  text-align: center;
+  margin: 16px 0 0 0;
+  font-style: italic;
+}
+
+.send-button {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #9429ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #7c1fd9;
+}
+
+.send-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.button-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.send-success-message,
+.send-error-message {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.send-success-message {
+  background-color: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #86efac;
+}
+
+.send-error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.send-success-message svg,
+.send-error-message svg {
+  flex-shrink: 0;
+}
+
