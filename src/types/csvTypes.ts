@@ -13,6 +13,7 @@ export const REQUIRED_FIELDS = [
   'country',
   'region',
   'esp host',
+  'cta type',
 ] as const;
 
 export type RequiredField = typeof REQUIRED_FIELDS[number];
