@@ -35,7 +35,7 @@ export async function parseCSVFile(file: File): Promise<ParsedCSVData> {
             reject(new Error(`Failed to parse CSV: ${error instanceof Error ? error.message : 'Unknown error'}`));
           }
         },
-        error: (error) => {
+        error: (error: { message: string }) => {
           reject(new Error(`CSV parsing error: ${error.message}`));
         },
       });
@@ -59,7 +59,7 @@ export function extractHeaders(csvText: string): Promise<string[]> {
         const headers = results.meta.fields || [];
         resolve(headers);
       },
-      error: (error) => {
+      error: (error: { message: string }) => {
         reject(new Error(`Failed to extract headers: ${error.message}`));
       },
     });
