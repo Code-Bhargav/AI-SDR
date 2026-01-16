@@ -28,14 +28,42 @@ export async function sendToN8NWebhook(
 
     // Use proxy in development to avoid CORS issues
     const isDevelopment = import.meta.env.DEV;
-    let requestUrl = webhookUrl;
-    
-    if (isDevelopment && webhookUrl.includes('n8n-connector-208576477784.asia-south1.run.app')) {
-      // Replace the full URL with proxy path
-      requestUrl = webhookUrl.replace(
-        'https://n8n-connector-208576477784.asia-south1.run.app',
-        '/api/n8n'
-      );
+    let requestUrl: string;
+    let requestBody: {
+      webhookUrl?: string;
+      headers: string[];
+      rows: { [key: string]: string | undefined }[];
+      rowCount: number;
+    };
+
+    const csvPayload = {
+      headers: csvData.headers,
+      rows: csvData.rows,
+      rowCount: csvData.rows.length,
+    };
+
+    if (isDevelopment) {
+      // In development, use Vite proxy if URL matches the configured pattern
+      if (webhookUrl.includes('n8n-connector-208576477784.asia-south1.run.app')) {
+        // Use Vite proxy in development
+        requestUrl = webhookUrl.replace(
+          'https://n8n-connector-208576477784.asia-south1.run.app',
+          '/api/n8n'
+        );
+        requestBody = csvPayload;
+      } else {
+        // For other URLs in development, try direct fetch (may fail due to CORS)
+        // This allows testing with different webhook URLs in development
+        requestUrl = webhookUrl;
+        requestBody = csvPayload;
+      }
+    } else {
+      // Use Vercel serverless function in production to bypass CORS
+      requestUrl = `/api/n8n-proxy?url=${encodeURIComponent(webhookUrl)}`;
+      requestBody = {
+        webhookUrl: webhookUrl,
+        ...csvPayload,
+      };
     }
 
     const response = await fetch(requestUrl, {
@@ -43,11 +71,7 @@ export async function sendToN8NWebhook(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        headers: csvData.headers,
-        rows: csvData.rows,
-        rowCount: csvData.rows.length,
-      }),
+      body: JSON.stringify(requestBody),
       signal: controller.signal,
     });
 
@@ -56,7 +80,22 @@ export async function sendToN8NWebhook(
     if (!response.ok) {
       let errorText = '';
       try {
-        errorText = await response.text();
+        const responseText = await response.text();
+        // Try to parse as JSON first
+        try {
+          const responseData = JSON.parse(responseText);
+          // Handle proxy error response format
+          if (responseData.error) {
+            errorText = responseData.error;
+          } else if (responseData.data) {
+            errorText = responseData.data;
+          } else {
+            errorText = responseText;
+          }
+        } catch {
+          // Not JSON, use the text as-is
+          errorText = responseText;
+        }
       } catch {
         errorText = response.statusText;
       }
